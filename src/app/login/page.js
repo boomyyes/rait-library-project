@@ -1,11 +1,11 @@
 'use client';
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { setToken } from '../../lib/authSlice';
+import { setCredentials } from '../../lib/authSlice'; // Updated import
 import { loginUser } from '../../services/api';
 import { useRouter } from 'next/navigation';
+import { jwtDecode } from 'jwt-decode'; // New import
+import gsap from 'gsap';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -13,22 +13,23 @@ export default function LoginPage() {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();
+  const formRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     try {
       const response = await loginUser({ email, password });
-      dispatch(setToken(response.data.token));
-      router.push('/'); // Redirect to homepage on successful login
+      const token = response.data.token;
+      const user = jwtDecode(token); // Decode the token
+      dispatch(setCredentials({ token, user })); // Dispatch credentials
+      router.push('/');
     } catch (err) {
       setError('Invalid credentials. Please try again.');
       console.error('Login failed:', err);
     }
   };
-
-  const formRef = useRef(null);
-
+  
     useEffect(() => {
     // Animate the form elements fading in and sliding up
     gsap.from(formRef.current.children, {
