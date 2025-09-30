@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { setToken } from '@/lib/authSlice';
+import { setCredentials } from '@/lib/authSlice';
 import { loginUser } from '@/services/api';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
@@ -33,8 +33,9 @@ export default function LoginPage() {
     setError(null);
     try {
       const response = await loginUser({ email, password });
-      dispatch(setToken(response.data.token));
-      router.push('/');
+      dispatch(setCredentials(response.data));
+      // Redirect to the dashboard on successful login
+      router.push('/dashboard');
     } catch (err) {
       setError('Invalid credentials. Please try again.');
       console.error('Login failed:', err);

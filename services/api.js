@@ -22,6 +22,11 @@ export const getBooks = () => {
   return axios.get(`${API_URLS.books}/books`);
 };
 
+// New function to get a single book by its ID
+export const getBookById = (bookId) => {
+  return axios.get(`${API_URLS.books}/books/${bookId}`);
+};
+
 export const borrowBook = (bookId, userId) => {
   // For authenticated requests, we need to pass the userId in the headers
   const config = {
@@ -55,3 +60,4 @@ export const getUserRecords = (userId) => {
 export const createPaymentOrder = (fineData) => {
   return axios.post(`${API_URLS.payments}/create-order`, fineData);
 };
+

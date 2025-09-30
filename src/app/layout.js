@@ -3,7 +3,9 @@ import './globals.css';
 import { StoreProvider } from '@/lib/StoreProvider';
 import Header from '@/components/Header';
 import Stairs from '@/components/Stairs';
-import Template from '@/components/Template'; // Import the new Template
+import Template from '@/components/Template';
+// Import the new PageWrapper
+import PageWrapper from '@/components/PageWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,12 +20,14 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <StoreProvider>
           <Header />
-          <main className="pt-24 px-8">
-            {/* Stairs provides the "curtain" */}
+          {/* Main tag no longer has padding */}
+          <main>
             <Stairs>
-              {/* Template provides the content fade-in */}
               <Template>
-                {children}
+                {/* PageWrapper will now handle the padding */}
+                <PageWrapper>
+                  {children}
+                </PageWrapper>
               </Template>
             </Stairs>
           </main>
