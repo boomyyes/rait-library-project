@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { getUserRecords, returnBook } from '../../services/api';
+import { getUserRecords, returnBook } from '@/services/api';
 
 export default function DashboardPage() {
   const { isAuthenticated, user } = useSelector((state) => state.auth);

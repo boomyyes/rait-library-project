@@ -7,23 +7,36 @@ export default function BookList({ books }) {
   const gridRef = useRef(null);
 
   useEffect(() => {
-    // Ensure the grid and its children exist before animating
-    if (gridRef.current && gridRef.current.children.length > 0) {
-      gsap.from(gridRef.current.children, {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = grid.children;
+    if (cards.length === 0) return;
+
+    // Use a GSAP context for safe animation cleanup
+    const ctx = gsap.context(() => {
+      // Set the initial state (hidden)
+      gsap.set(cards, { opacity: 0, y: 40 });
+      // Animate to the final state (visible)
+      gsap.to(cards, {
         duration: 0.8,
-        opacity: 0,
-        y: 50,
-        stagger: 0.1, // This creates the staggered effect
+        opacity: 1,
+        y: 0,
         ease: 'power3.out',
+        stagger: 0.15,
       });
-    }
-  }, [books]); // Rerun the animation if the books array changes
+    }, grid);
+
+    // Cleanup function: this runs when the component unmounts or re-renders
+    return () => ctx.revert();
+
+  }, [books]);
 
   return (
-    <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {books.map((book) => (
-        <BookCard key={book.id} book={book} />
-      ))}
-    </div>
+     <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {books.map((book) => (
+          <BookCard key={book.id} book={book} />
+        ))}
+     </div>
   );
 }
