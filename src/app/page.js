@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 
+// --- VIDEO SOURCE ---
 const videoSrc = "/rait.mp4"; 
 
 // --- Background Media Component ---
@@ -10,7 +11,6 @@ const BackgroundMedia = ({ src }) => {
   return (
     <div className="absolute top-0 left-0 w-full h-full bg-black z-0">
       <div className="absolute inset-0 bg-black/60 z-10"></div>
-      {/* The 'object-center' class is added here to fix the positioning */}
       <video autoPlay loop muted playsInline className="w-full h-full object-cover object-center">
         <source src={src} type="video/mp4" />
       </video>
@@ -55,7 +55,6 @@ const BottomSection = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      // Using IST for demonstration, you can adjust the timezone as needed
       const timeString = now.toLocaleTimeString('en-US', {
           hour12: false,
           hour: '2-digit',
@@ -72,16 +71,11 @@ const BottomSection = () => {
   return (
     <div className="w-full absolute bottom-0 left-0 p-4 lg:p-8 z-20">
       <div className="flex justify-between items-end">
-        {/* Left Side: Action Buttons */}
+        {/* Left Side: Browse Button */}
         <div className="flex items-center gap-4">
           <Link href="/browse" className='group relative'>
             <div className='lg:h-36 h-24 w-24 lg:w-36 flex items-center justify-center border-2 border-white rounded-full uppercase transition-colors duration-300 group-hover:border-lime-300 group-hover:text-lime-300'>
               <span className='text-md lg:text-xl font-semibold tracking-wider pt-1'>Browse</span>
-            </div>
-          </Link>
-          <Link href="/login" className='group relative'>
-            <div className='lg:h-36 h-24 w-24 lg:w-36 flex items-center justify-center border-2 border-white rounded-full uppercase transition-colors duration-300 group-hover:border-lime-300 group-hover:text-lime-300'>
-              <span className='text-md lg:text-xl font-semibold tracking-wider pt-1'>Login</span>
             </div>
           </Link>
         </div>
@@ -113,3 +107,4 @@ export default function LandingPage() {
     </main>
   );
 }
+
