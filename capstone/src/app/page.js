@@ -1,7 +1,10 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '@/lib/authSlice';
+import { useRouter } from 'next/navigation';
 
 const videoSrc = "/rait.mp4"; 
 
@@ -36,8 +39,27 @@ const HeroText = ({ videoSrc }) => {
   );
 };
 
+// Reusable Circle Button Component
+const CircleButton = ({ href, onClick, children, className }) => {
+  const content = (
+    <div className={`lg:h-36 h-24 w-24 lg:w-36 flex items-center justify-center border-2 border-white rounded-full uppercase transition-colors duration-300 ${className}`}>
+      <span className='text-md lg:text-xl font-semibold tracking-wider pt-1'>{children}</span>
+    </div>
+  );
+
+  return href ? <Link href={href} className="group relative">{content}</Link> : <button onClick={onClick} className="group relative">{content}</button>;
+};
+
 const BottomSection = () => {
   const [time, setTime] = useState('');
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push('/');
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -51,11 +73,19 @@ const BottomSection = () => {
   return (
     <div className="w-full absolute bottom-0 left-0 p-4 lg:p-8 z-20">
       <div className="flex justify-between items-end">
-        <Link href="/browse" className='group relative'>
-          <div className='lg:h-36 h-24 w-24 lg:w-36 flex items-center justify-center border-2 border-white rounded-full uppercase transition-colors duration-300 group-hover:border-lime-300 group-hover:text-lime-300'>
-            <span className='text-md lg:text-xl font-semibold tracking-wider pt-1'>Browse</span>
-          </div>
-        </Link>
+        <div className="flex items-end gap-6">
+          <CircleButton href="/browse" className="group-hover:border-lime-300 group-hover:text-lime-300">Browse</CircleButton>
+          
+          {isAuthenticated ? (
+            <CircleButton href="/dashboard" className="group-hover:border-blue-400 group-hover:text-blue-400">Dashboard</CircleButton>
+          ) : (
+            <>
+              <CircleButton href="/login" className="group-hover:border-blue-400 group-hover:text-blue-400">Log In</CircleButton>
+              <CircleButton href="/register" className="group-hover:border-green-400 group-hover:text-green-400">Register</CircleButton>
+            </>
+          )}
+        </div>
+        
         <div className="text-right">
           <p className='hidden lg:block lg:w-[22vw] font-light text-gray-300 text-base leading-relaxed text-left mb-4'>
             The RAIT Library Project is a modern digital solution designed to streamline book management. Discover, borrow, and engage with our extensive collection effortlessly.

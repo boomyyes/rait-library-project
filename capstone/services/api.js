@@ -11,7 +11,7 @@ export const loginUser = (credentials) => axios.post(`${API_URLS.auth}/login`, c
 export const registerUser = (userData) => axios.post(`${API_URLS.auth}/register`, userData);
 
 // --- Book Service Calls ---
-export const getBooks = () => axios.get(`${API_URLS.books}/books`);
+export const getBooks = (page = 0, size = 10) => axios.get(`${API_URLS.books}/books?page=${page}&size=${size}`);
 export const getBookById = (id) => axios.get(`${API_URLS.books}/books/${id}`);
 
 const getAuthHeaders = (userId) => ({ headers: { 'X-User-Id': userId } });

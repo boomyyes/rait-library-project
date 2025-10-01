@@ -6,7 +6,11 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'brand-red': '#8B0000', // <-- Add your custom red color
+      },
+    },
   },
   plugins: [],
 };

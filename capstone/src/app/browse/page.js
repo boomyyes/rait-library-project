@@ -7,15 +7,16 @@ import gsap from 'gsap';
 
 export default function BrowsePage() {
   const dispatch = useDispatch();
-  const { items: books, status: bookStatus, error } = useSelector((state) => state.books);
+  const { items: bookPage, status: bookStatus, error } = useSelector((state) => state.books);
   
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    if (bookStatus === 'idle') dispatch(fetchBooks());
-  }, [bookStatus, dispatch]);
+    dispatch(fetchBooks({ page: currentPage, size: 9 }));
+  }, [dispatch, currentPage]);
   
   useEffect(() => {
       const ctx = gsap.context(() => {
@@ -23,6 +24,8 @@ export default function BrowsePage() {
       });
       return () => ctx.revert();
   }, []);
+
+  const books = bookPage?.content || [];
 
   const genres = useMemo(() => ['All', ...new Set(books.map(book => book.genre))], [books]);
 
@@ -33,6 +36,18 @@ export default function BrowsePage() {
       (!showAvailableOnly || book.available)
     );
   }, [books, searchQuery, selectedGenre, showAvailableOnly]);
+
+  const handleNextPage = () => {
+    if (!bookPage.last) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (!bookPage.first) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <div>
@@ -50,6 +65,11 @@ export default function BrowsePage() {
       {bookStatus === 'succeeded' ? <BookList books={filteredBooks} /> : <p className="text-center mt-20">Loading...</p>}
       {bookStatus === 'succeeded' && filteredBooks.length === 0 && <p className="text-center mt-20 text-gray-400">No books match your criteria.</p>}
       {bookStatus === 'failed' && <p className="text-center mt-20 text-red-500">{error}</p>}
+      <div className="flex justify-center items-center gap-4 mt-12">
+        <button onClick={handlePreviousPage} disabled={bookPage?.first} className="px-6 py-2 bg-white text-black font-semibold rounded-md hover:bg-gray-300 disabled:bg-gray-500">Previous</button>
+        <span>Page {bookPage ? bookPage.number + 1 : 1} of {bookPage?.totalPages}</span>
+        <button onClick={handleNextPage} disabled={bookPage?.last} className="px-6 py-2 bg-white text-black font-semibold rounded-md hover:bg-gray-300 disabled:bg-gray-500">Next</button>
+      </div>
     </div>
   );
 }
