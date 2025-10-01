@@ -3,6 +3,7 @@ package com.rait.library_service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
 import java.util.List;
 
 @RestController
@@ -13,8 +14,8 @@ public class BorrowingController {
     private BorrowingService borrowingService;
 
     @GetMapping("/books")
-    public List<Book> getAllBooks() {
-        return borrowingService.getAllBooks();
+    public Page<Book> getAllBooks(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        return borrowingService.getAllBooks(page, size);
     }
 
     @GetMapping("/books/{id}")
