@@ -1,8 +1,7 @@
-# **RAIT Library Management System: A Deep Dive**
+# **RAIT Library Management System**
 
-Welcome to the RAIT Library Management System\! This is a full-stack web application designed to modernize the library experience. It's built with a professional microservices architecture, which means it's divided into smaller, independent services that work together.
-
-This guide will provide a deep dive into the project's setup, architecture, and the purpose and code of each file, aimed at a student developer who understands the basics.
+This is a guide I made to help my other members understand this project
+this guide will MAKE you understand the basics, find out what some code-lines and components do, and help you prepare for the viva.
 
 ## **Table of Contents**
 
