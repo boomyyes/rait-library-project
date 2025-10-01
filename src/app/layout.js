@@ -4,7 +4,6 @@ import { StoreProvider } from '@/lib/StoreProvider';
 import Header from '@/components/Header';
 import Stairs from '@/components/Stairs';
 import Template from '@/components/Template';
-// Import the new PageWrapper
 import PageWrapper from '@/components/PageWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,14 +19,10 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <StoreProvider>
           <Header />
-          {/* Main tag no longer has padding */}
           <main>
             <Stairs>
               <Template>
-                {/* PageWrapper will now handle the padding */}
-                <PageWrapper>
-                  {children}
-                </PageWrapper>
+                <PageWrapper>{children}</PageWrapper>
               </Template>
             </Stairs>
           </main>
