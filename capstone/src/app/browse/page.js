@@ -65,7 +65,7 @@ export default function BrowsePage() {
       {bookStatus === 'succeeded' ? <BookList books={filteredBooks} /> : <p className="text-center mt-20">Loading...</p>}
       {bookStatus === 'succeeded' && filteredBooks.length === 0 && <p className="text-center mt-20 text-gray-400">No books match your criteria.</p>}
       {bookStatus === 'failed' && <p className="text-center mt-20 text-red-500">{error}</p>}
-      <div className="flex justify-center items-center gap-4 mt-12">
+      <div className="flex justify-center items-center gap-4 mt-12 pb-6">
         <button onClick={handlePreviousPage} disabled={bookPage?.first} className="px-6 py-2 bg-white text-black font-semibold rounded-md hover:bg-gray-300 disabled:bg-gray-500">Previous</button>
         <span>Page {bookPage ? bookPage.number + 1 : 1} of {bookPage?.totalPages}</span>
         <button onClick={handleNextPage} disabled={bookPage?.last} className="px-6 py-2 bg-white text-black font-semibold rounded-md hover:bg-gray-300 disabled:bg-gray-500">Next</button>

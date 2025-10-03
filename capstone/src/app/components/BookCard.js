@@ -38,10 +38,10 @@ import Link from 'next/link';
    };
 
    return (
-    <Link href={`/books/${book.id}`} className="block h-full">
      <div className="border border-gray-800 p-6 flex flex-col h-full hover:border-white transition-colors duration-300">
        <div className="flex-grow">
          <h3 className="text-xl font-semibold mb-2 tracking-tighter text-white">{book.title}</h3>
+         <p className="text-gray-500 mb-2 text-sm">by {book.author}</p>
          <p className="text-gray-400 mb-4 text-sm uppercase tracking-wider">{book.genre}</p>
          <p className="mb-4 text-gray-300 leading-relaxed line-clamp-3">{book.synopsis}</p>
        </div>
@@ -58,7 +58,6 @@ import Link from 'next/link';
        </button>
        {error && <p className="text-red-500 text-center text-sm mt-2">{error}</p>}
      </div>
-    </Link>
    );
  }
 
