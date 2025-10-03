@@ -87,11 +87,11 @@ const BottomSection = () => {
         </div>
         
         <div className="text-right">
-          <p className='hidden lg:block lg:w-[22vw] font-light text-gray-300 text-base leading-relaxed text-left mb-4'>
-            The RAIT Library Project is a modern digital solution designed to streamline book management. Discover, borrow, and engage with our extensive collection effortlessly.
+          <p className='hidden lg:block lg:w-[22vw] font-light text-gray-300 text-base leading-relaxed text-right mb-4'>
+            Made by Avanish Wankhede, Jash Verma, Gaurav Vojhala, and Ansh Yadav.
           </p>
           <div className="flex justify-end items-center gap-4 text-sm text-gray-400">
-            <span>Nerul, Navi Mumbai-400706</span>
+            <span>Nerul, Sector 7, Navi Mumbai-400706</span>
             <span className="text-white font-mono">{time}</span>
           </div>
         </div>

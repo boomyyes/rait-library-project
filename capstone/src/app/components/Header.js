@@ -55,7 +55,7 @@ export default function Header() {
 
   const isLandingPage = pathname === '/';
   const headerBg = isLandingPage ? 'bg-transparent' : 'bg-black/80 backdrop-blur-sm';
-  const hamburgerColor = isNavOpen ? 'bg-black' : 'bg-white';
+  const hamburgerColor = isNavOpen ? 'bg-white' : 'bg-white';
 
   return (
     <>
@@ -82,6 +82,7 @@ export default function Header() {
           className="fixed top-[88px] right-[32px] bg-white text-black p-6 rounded-md shadow-lg z-[99] hidden opacity-0"
         >
           <nav className="flex flex-col gap-4 text-right">
+            <Link href="/browse" onClick={handleLinkClick} className="font-semibold hover:text-gray-600">Browse</Link>
             {isAuthenticated ? (
               <>
                 <Link href="/dashboard" onClick={handleLinkClick} className="font-semibold hover:text-gray-600">Dashboard</Link>

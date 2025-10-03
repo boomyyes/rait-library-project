@@ -21,6 +21,8 @@ import Link from 'next/link';
        return;
      }
 
+     console.log("User ID in Book Card:", user);
+
      setIsBorrowing(true);
      setError(null);
 
