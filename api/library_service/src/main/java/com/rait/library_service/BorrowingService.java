@@ -47,6 +47,8 @@ public class BorrowingService {
         record.setUserId(userId);
         record.setBook(book);
         record.setStatus(BorrowingRecord.Status.BORROWED);
+        // record.setBorrowDate(LocalDate.now());
+        // record.setDueDate(LocalDate.now().plusDays(-1));
         record.setBorrowDate(LocalDate.now());
         record.setDueDate(LocalDate.now().plusDays(10));
         return borrowingRecordRepository.save(record);
