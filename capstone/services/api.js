@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const API_URLS = {
-  auth: 'https://authservicerait-792546dd3064.herokuapp.com',
-  books: 'https://libraryservicerait-c22eb442f399.herokuapp.com/',
-  payments: 'https://paymentservicerait-13e561b67798.herokuapp.com/',
+  auth: process.env.NEXT_PUBLIC_API_URL_AUTH,
+  books: process.env.NEXT_PUBLIC_API_URL_BOOKS,
+  payments: process.env.NEXT_PUBLIC_API_URL_PAYMENTS,
 };
 
 // --- Auth Service Calls ---
