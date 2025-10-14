@@ -30,7 +30,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         // Add your Vercel deployment URL here. You can also add more URLs.
         // It's good practice to keep your localhost URL for development.
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://rait-library-project-79t0mgixh-avanish-wankhedes-projects.vercel.app"));
+        configuration.setAllowedOrigins(Arrays.asList(*));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
