@@ -8,7 +8,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.cors.CorsConfigurationSource;
-
 import java.util.Arrays;
 
 @Configuration
@@ -29,7 +28,9 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+        // Add your Vercel deployment URL here. You can also add more URLs.
+        // It's good practice to keep your localhost URL for development.
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "https://rait-library-project-79t0mgixh-avanish-wankhedes-projects.vercel.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
