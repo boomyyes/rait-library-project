@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const API_URLS = {
-  auth: 'http://localhost:3001/api/auth',
-  books: 'http://localhost:8080/api',
-  payments: 'http://localhost:3002/api/payments',
+  auth: 'https://authservicerait-792546dd3064.herokuapp.com',
+  books: 'https://libraryservicerait-c22eb442f399.herokuapp.com/',
+  payments: 'https://paymentservicerait-13e561b67798.herokuapp.com/',
 };
 
 // --- Auth Service Calls ---

@@ -6,7 +6,7 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const DB_URI = 'mongodb://localhost:27017/authdb';
+const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/authdb';
 
 // Middleware
 app.use(cors());

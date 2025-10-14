@@ -52,6 +52,8 @@ const StairAnimation = React.forwardRef((props, ref) => {
     },
   }));
 
+  StairAnimation.displayName = 'StairAnimation';
+
   return (
     <div ref={stairContainerRef} className="fixed top-0 left-0 w-full h-screen hidden pointer-events-none">
       <div className="flex h-full w-full">
