@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const API_URLS = {
-  auth: 'http://localhost:3001/api/auth',
-  books: 'http://localhost:8080/api',
-  payments: 'http://localhost:3002/api/payments',
+  auth: 'https://rait-library-project-1.onrender.com',
+  books: 'https://library-service-m49l.onrender.com',
+  payments: 'https://payment-service-4q8w.onrender.com',
 };
 
 // --- Auth Service Calls ---
