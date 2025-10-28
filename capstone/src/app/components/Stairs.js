@@ -64,3 +64,5 @@ const StairAnimation = React.forwardRef((props, ref) => {
     </div>
   );
 });
+
+StairAnimation.displayName = "StairAnimation";

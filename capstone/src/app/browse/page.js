@@ -25,7 +25,7 @@ export default function BrowsePage() {
       return () => ctx.revert();
   }, []);
 
-  const books = bookPage?.content || [];
+  const books = useMemo(() => bookPage?.content || [], [bookPage?.content]);
 
   const genres = useMemo(() => ['All', ...new Set(books.map(book => book.genre))], [books]);
 
