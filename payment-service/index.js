@@ -6,11 +6,8 @@ const paymentRoutes = require('./routes/payment');
 const app = express();
 const PORT = process.env.PORT || 3002;
 
-// CORS configuration for production
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
-  credentials: true
-}));
+// CORS configuration for production (no protection for now since it allows every link whatsoever)
+app.use(cors());
 
 app.use(express.json());
 

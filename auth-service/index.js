@@ -10,11 +10,8 @@ const PORT = process.env.PORT || 3001;
 // Use environment variable for MongoDB
 const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/authdb';
 
-// CORS configuration for production
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
-  credentials: true
-}));
+// CORS configuration for production (no protection for now because it allows every link)
+app.use(cors());
 
 app.use(express.json());
 
