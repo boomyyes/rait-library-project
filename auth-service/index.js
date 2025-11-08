@@ -11,7 +11,12 @@ const PORT = process.env.PORT || 3001;
 const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/authdb';
 
 // CORS configuration for production (no protection for now because it allows every link)
-app.use(cors());
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://rait-library-project.vercel.app', 'https://*.vercel.app'],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
