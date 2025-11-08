@@ -8,7 +8,10 @@ const PORT = process.env.PORT || 3002;
 
 // CORS configuration for production (no protection for now since it allows every link whatsoever)
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://rait-library-project.vercel.app', 'https://*.vercel.app'],
+  origin: [
+    'http://localhost:3000', 
+    /^https:\/\/rait-library-project.*\.vercel\.app$/
+  ],
   credentials: true 
 };
 app.use(cors(corsOptions));
