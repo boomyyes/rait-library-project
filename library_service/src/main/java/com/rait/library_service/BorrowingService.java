@@ -1,15 +1,16 @@
 package com.rait.library_service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
@@ -47,10 +48,10 @@ public class BorrowingService {
         record.setUserId(userId);
         record.setBook(book);
         record.setStatus(BorrowingRecord.Status.BORROWED);
-        // record.setBorrowDate(LocalDate.now());
-        // record.setDueDate(LocalDate.now().plusDays(-1));
         record.setBorrowDate(LocalDate.now());
-        record.setDueDate(LocalDate.now().plusDays(10));
+        record.setDueDate(LocalDate.now().plusDays(-1));
+        // record.setBorrowDate(LocalDate.now());
+        // record.setDueDate(LocalDate.now().plusDays(10));
         return borrowingRecordRepository.save(record);
     }
 

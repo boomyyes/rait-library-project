@@ -7,9 +7,9 @@ const PAYMENT_SERVICE_BASE_URL = 'https://payment-service-4q8w.onrender.com';
 
 // Construct the full API endpoint URLs
 const API_URLS = {
-  auth: `${AUTH_SERVICE_BASE_URL}/api/auth`,     // Added /api/auth path
-  books: `${BOOK_SERVICE_BASE_URL}/api`,        // Added /api path
-  payments: `${PAYMENT_SERVICE_BASE_URL}/api/payments`, // Added /api/payments path
+  auth: `${AUTH_SERVICE_BASE_URL}/api/auth`,
+  books: `${BOOK_SERVICE_BASE_URL}/api`, 
+  payments: `${PAYMENT_SERVICE_BASE_URL}/api/payments`, 
 };
 
 // --- Auth Service Calls ---
