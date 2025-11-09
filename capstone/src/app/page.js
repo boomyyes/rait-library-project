@@ -34,7 +34,7 @@ const HeroText = ({ videoSrc }) => {
         </div>
         LIBRARY
       </div>
-      <div className='hero-line lg:text-[9.5vw] text-[12vw] flex justify-center items-center uppercase lg:leading-[8vw] leading-[10vw] tracking-tighter'>BOOKS</div>
+      {/* <div className='hero-line lg:text-[9.5vw] text-[12vw] flex justify-center items-center uppercase lg:leading-[8vw] leading-[10vw] tracking-tighter'>BOOKS</div> */}
     </div>
   );
 };
